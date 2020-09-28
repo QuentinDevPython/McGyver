@@ -10,7 +10,6 @@ class Items(pygame.sprite.Sprite):
         self.image = pygame.image.load('assets/items/' + image_name)
 
         self.rect = self.image.get_rect()
-        print(self.image.get_rect())
         self.item_position = self.position
         self.rect.x = self.item_position[0]
         self.rect.y = self.item_position[1]

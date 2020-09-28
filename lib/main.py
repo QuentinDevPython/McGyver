@@ -26,7 +26,7 @@ while running:
 
     game.all_items.draw(screen)
     screen.blit(game.player.image, game.player.rect)
-
+    game.player.is_collision()
     pygame.display.flip()
 
     for event in pygame.event.get():
@@ -35,7 +35,6 @@ while running:
             pygame.quit()
 
         elif event.type == pygame.KEYDOWN:
-            game.player.is_collision()
             if event.key == pygame.K_RIGHT:
                 game.player.move_right()
                 if game.player.is_victorious():

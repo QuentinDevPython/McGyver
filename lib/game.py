@@ -21,6 +21,11 @@ class Game:
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
 
+    def is_in_all_items(self, item):
+        for sprite in self.all_items:
+            if item == sprite:
+                return True
+
     def spawn_items(self):
         self.all_items.add(self.item_needle)
         self.all_items.add(self.item_tube)

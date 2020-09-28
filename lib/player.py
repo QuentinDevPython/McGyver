@@ -24,13 +24,13 @@ class Player(pygame.sprite.Sprite):
         position_player = (self.rect.x, self.rect.y)
         if self.game.check_collision(self, self.game.all_items):
             self.inventory.append('True')
-            if position_player == self.game.item_needle.item_position:
+            if position_player == self.game.item_needle.item_position and self.game.is_in_all_items(self.game.item_needle):
                 self.game.all_items.remove(self.game.item_needle)
-            if position_player == self.game.item_tube.item_position:
+            elif position_player == self.game.item_tube.item_position and self.game.is_in_all_items(self.game.item_tube):
                 self.game.all_items.remove(self.game.item_tube)
-            if position_player == self.game.item_syringe.item_position:
+            elif position_player == self.game.item_syringe.item_position and self.game.is_in_all_items(self.game.item_syringe):
                 self.game.all_items.remove(self.game.item_syringe)
-            if position_player == self.game.item_ether.item_position:
+            elif position_player == self.game.item_ether.item_position and self.game.is_in_all_items(self.game.item_ether):
                 self.game.all_items.remove(self.game.item_ether)
 
     def move_right(self):
