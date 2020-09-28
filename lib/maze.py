@@ -1,6 +1,8 @@
 import pygame
 import random
 
+'''class that manages the labyrinth grid'''
+
 
 class Maze:
 
@@ -21,6 +23,10 @@ class Maze:
             'assets/characters/guardian.png')
         self.player_position = (1, 1)
         self.item_position = (0, 0)
+
+    '''function which retrieves the grid of the labyrinth, 
+    stores it in a list list then transforms each entity (walls, floor, departure, arrival) 
+    into data which is stored in the lists corresponding to these entities'''
 
     def create_maze(self):
 
@@ -56,6 +62,8 @@ class Maze:
                 if maze[line_maze][column_maze] == '2':
                     self.end.append((column_maze, line_maze))
 
+    '''function that displays the labyrinth on our screen'''
+
     def create_maze_map(self, screen):
 
         for wall in self.wall:
@@ -69,6 +77,8 @@ class Maze:
             screen.blit(self.guardian_image,
                         (end[0] * 40 + 3, end[1] * 40 + 2))
 
+    '''function that checks that a location is free (that it is a floor) so that the player can move there'''
+
     def is_free_square(self, x, y):
         can_move_right = False
         next_player_position = (
@@ -81,6 +91,8 @@ class Maze:
                 can_move_right = True
         return can_move_right
 
+    '''function that checks that the player's right square corresponds to the arrival square'''
+
     def is_guardian_square(self):
         next_player_position = (
             self.player_position[0] + 1, self.player_position[1])
@@ -88,6 +100,7 @@ class Maze:
             if next_player_position == end:
                 return True
 
+    '''property that defines a random position for the items that the player must collect'''
     @property
     def is_item_square(self):
         position = False

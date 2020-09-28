@@ -3,7 +3,7 @@ from player import Player
 from maze import Maze
 from items import Items
 
-# create a class that will represent the game
+'''class that will represent the game'''
 
 
 class Game:
@@ -18,13 +18,19 @@ class Game:
         self.item_syringe = Items('syringe.png', self)
         self.spawn_items()
 
+    '''function to check a collision between a sprite and a group of sprites'''
+
     def check_collision(self, sprite, group):
         return pygame.sprite.spritecollide(sprite, group, False, pygame.sprite.collide_mask)
+
+    '''function to determine if an item was removed from the group of items (so removed from the maze) or not'''
 
     def is_in_all_items(self, item):
         for sprite in self.all_items:
             if item == sprite:
                 return True
+
+    '''function to spawn the items in the maze at the beginning of the game'''
 
     def spawn_items(self):
         self.all_items.add(self.item_needle)
