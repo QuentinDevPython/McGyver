@@ -24,7 +24,8 @@ while running:
 
     game.maze.create_maze_map(screen)
 
-    screen.blit(game.player.player_image, game.player.rect)
+    game.all_items.draw(screen)
+    screen.blit(game.player.image, game.player.rect)
 
     pygame.display.flip()
 
@@ -34,9 +35,11 @@ while running:
             pygame.quit()
 
         elif event.type == pygame.KEYDOWN:
+            game.player.is_collision()
             if event.key == pygame.K_RIGHT:
                 game.player.move_right()
-                game.player.is_victorious()
+                if game.player.is_victorious():
+                    running = False
             elif event.key == pygame.K_LEFT:
                 game.player.move_left()
             elif event.key == pygame.K_UP:

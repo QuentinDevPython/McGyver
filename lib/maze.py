@@ -1,4 +1,5 @@
 import pygame
+import random
 
 
 class Maze:
@@ -19,6 +20,7 @@ class Maze:
         self.guardian_image = pygame.image.load(
             'assets/characters/guardian.png')
         self.player_position = (1, 1)
+        self.item_position = (0, 0)
 
     def create_maze(self):
 
@@ -31,7 +33,7 @@ class Maze:
         for line_maze in range(LENGHT):
             maze.append([0] * WIDTH)
 
-        maze_file = open("lib/maze.txt", "r")
+        maze_file = open("lib/maze_grid.txt", "r")
         contenu_maze_file = maze_file.read()
         contenu_maze_file = contenu_maze_file.split()
 
@@ -85,3 +87,15 @@ class Maze:
         for end in self.end:
             if next_player_position == end:
                 return True
+
+    @property
+    def is_item_square(self):
+        position = False
+        while position == False:
+            self.item_position = (random.randint(1, 15), random.randint(1, 15))
+            for floor in self.floor:
+                if self.item_position == floor:
+                    position = True
+                    return self.item_position
+                else:
+                    position = False
