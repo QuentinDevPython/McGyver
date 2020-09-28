@@ -24,8 +24,6 @@ class Player(pygame.sprite.Sprite):
         position_player = (self.rect.x, self.rect.y)
         if self.game.check_collision(self, self.game.all_items):
             self.inventory.append('True')
-            print(self.game.item_needle.item_position)
-            print(position_player)
             if position_player == self.game.item_needle.item_position:
                 self.game.all_items.remove(self.game.item_needle)
             if position_player == self.game.item_tube.item_position:
