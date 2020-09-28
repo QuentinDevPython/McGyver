@@ -15,13 +15,16 @@ pygame.display.set_caption('Escape from the maze')
 # load the game
 game = Game()
 
+# create the maze
+game.maze.create_maze()
+
 running = True
 
 while running:
 
-    # draw the maze here
+    game.maze.create_maze_map(screen)
 
-    screen.blit(game.player.image, game.player.rect)
+    screen.blit(game.player.player_image, game.player.rect)
 
     pygame.display.flip()
 
@@ -33,6 +36,7 @@ while running:
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 game.player.move_right()
+                game.player.is_victorious()
             elif event.key == pygame.K_LEFT:
                 game.player.move_left()
             elif event.key == pygame.K_UP:
